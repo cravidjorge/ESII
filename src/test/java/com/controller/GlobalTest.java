@@ -19,7 +19,7 @@ class GlobalTest {
     }
 
     @Test
-    void createUserNullName() throws IOException {
+    void createUserBlankName() throws IOException {
         Response<CreateUser> response = controller.createUser("", "leader");
         assertEquals(422, response.code());
         assert response.errorBody() != null;
@@ -27,7 +27,7 @@ class GlobalTest {
     }
 
     @Test
-    void createUserNullJob() throws IOException {
+    void createUserBlankJob() throws IOException {
         Response<CreateUser> response = controller.createUser("morpheus", "");
         assertEquals(422, response.code());
         assert response.errorBody() != null;

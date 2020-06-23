@@ -22,13 +22,13 @@ class GlobalTest {
 
     @Test
     void createUserNullName() {
-        assertThrows(NullPointerException.class, () -> controller.createUser(null, null));
+        assertThrows(NullPointerException.class, () -> controller.createUser(null, "leader"));
     }
 
     @Test
     void createUserNullJob() {
         assertThrows(NullPointerException.class, () ->
-                controller.createUser(null, null)
+                controller.createUser("morpheus", null)
         );
     }
 

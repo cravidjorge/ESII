@@ -24,7 +24,7 @@
 ## 👷‍♂️ Development
  1. Clone repository
  ```bash
- $ git clone https://github.com/cravidjorge/esII.git
+ $ git clone https://github.com/cravidjorge/ESII.git
  ```
  
  ## 📝 License

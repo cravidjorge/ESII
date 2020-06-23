@@ -7,8 +7,8 @@ import com.google.gson.JsonParser;
 public class UserJob {
     private String id;
     private String createdAt;
-    private String name;
-    private String job;
+    private final String name;
+    private final String job;
     private String updatedAt;
 
     public UserJob(String name, String job) {

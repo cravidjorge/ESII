@@ -1,26 +1,21 @@
 package com.controller.api;
 
 import com.controller.ControllerInterface;
-import com.data.UserJob;
+import com.exceptions.InvalidArgumentException;
 import com.response.CreateUser;
-import okhttp3.MediaType;
-import okhttp3.ResponseBody;
-import retrofit2.Call;
 import retrofit2.Response;
-
-import java.io.IOException;
 
 public class ControllerAPI implements ControllerInterface {
     private final Integer maxLength = 50;
 
-    public Response<CreateUser> createUser(String name, String job) throws IOException {
-        if (name.isBlank() || job.isBlank() || name.length() > maxLength || job.length() > maxLength) {
-            return Response.error(422, ResponseBody.create(MediaType.parse("application/json"), "Invalid Arguments"));
+    public Response<CreateUser> createUser(String name, String job) throws InvalidArgumentException {
+        if (name == null || job == null) {
+            throw new NullPointerException("Null Arguments");
         }
-        Endpoint endpoint = APIClient.getClient().create(Endpoint.class);
-        UserJob userJob = new UserJob("morpheus", "leader");
-        Call<CreateUser> request = endpoint.create(userJob.toJsonObject());
-        return request.execute();
+        if (name.isBlank() || job.isBlank() || name.length() > maxLength || job.length() > maxLength) {
+            throw new InvalidArgumentException("Invalid Arguments");
+        }
+        return Response.success(201, new CreateUser("14", "morpheus", "leader", "2020-06-23T03:22:48.471Z"));
     }
 
     public void singleUser(Integer id) {

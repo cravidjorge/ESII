@@ -1,6 +1,7 @@
 package com.controller;
 
 import com.controller.api.ControllerAPI;
+import com.exceptions.InvalidArgumentException;
 import com.response.CreateUser;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -9,6 +10,7 @@ import retrofit2.Response;
 import java.io.IOException;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class GlobalTest {
     ControllerInterface controller = null;
@@ -19,39 +21,47 @@ class GlobalTest {
     }
 
     @Test
-    void createUserBlankName() throws IOException {
-        Response<CreateUser> response = controller.createUser("", "leader");
-        assertEquals(422, response.code());
-        assert response.errorBody() != null;
-        assertEquals("Invalid Arguments", response.errorBody().string());
+    void createUserNullName() {
+        assertThrows(NullPointerException.class, () -> controller.createUser(null, null));
     }
 
     @Test
-    void createUserBlankJob() throws IOException {
-        Response<CreateUser> response = controller.createUser("morpheus", "");
-        assertEquals(422, response.code());
-        assert response.errorBody() != null;
-        assertEquals("Invalid Arguments", response.errorBody().string());
+    void createUserNullJob() {
+        assertThrows(NullPointerException.class, () ->
+                controller.createUser(null, null)
+        );
     }
 
     @Test
-    void createUserNameLengthToBig() throws IOException {
-        Response<CreateUser> response = controller.createUser("João Antonio Sousa Filipe Morais Carvalhais Antunes", "leader");
-        assertEquals(422, response.code());
-        assert response.errorBody() != null;
-        assertEquals("Invalid Arguments", response.errorBody().string());
+    void createUserBlankName() {
+        assertThrows(InvalidArgumentException.class, () ->
+                controller.createUser("", "leader")
+        );
     }
 
     @Test
-    void createUserJobLengthToBig() throws IOException {
-        Response<CreateUser> response = controller.createUser("morpheus", "carpinteirooooooooooooooooooooooooooooooooooooooooo");
-        assertEquals(422, response.code());
-        assert response.errorBody() != null;
-        assertEquals("Invalid Arguments", response.errorBody().string());
+    void createUserBlankJob() {
+        assertThrows(InvalidArgumentException.class, () ->
+                controller.createUser("morpheus", "")
+        );
     }
 
     @Test
-    void createUserSuccessful() throws IOException {
+    void createUserNameLengthToBig() {
+        assertThrows(InvalidArgumentException.class, () ->
+                controller.createUser("João Antonio Sousa Filipe Morais Carvalhais Antunes", "leader")
+        );
+    }
+
+    @Test
+    void createUserJobLengthToBig() {
+        assertThrows(InvalidArgumentException.class, () ->
+                controller.createUser("morpheus", "carpinteirooooooooooooooooooooooooooooooooooooooooo")
+        );
+    }
+
+    @Test
+    void createUserSuccessful() throws IOException, InvalidArgumentException {
         Response<CreateUser> response = controller.createUser("morpheus", "leader");
         assertEquals(201, response.code());
         assert response.body() != null;

@@ -15,7 +15,7 @@ public class ControllerStub implements ControllerInterface {
         return Response.success(201, new CreateUser("14", "morpheus", "leader", "2020-06-23T03:22:48.471Z"));
     }
 
-    public void getUserById(Integer id) {
+    public void singleUser(Integer id) {
 
     }
 
@@ -23,11 +23,11 @@ public class ControllerStub implements ControllerInterface {
 
     }
 
-    public void registerUser() {
+    public void register() {
 
     }
 
-    public void authUser() {
+    public void login() {
 
     }
 
@@ -35,7 +35,7 @@ public class ControllerStub implements ControllerInterface {
 
     }
 
-    public void getResourceById(Integer id) {
+    public void singleResource(Integer id) {
 
     }
 }

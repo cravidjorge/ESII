@@ -23,7 +23,7 @@ public class ControllerAPI implements ControllerInterface {
         return request.execute();
     }
 
-    public void getUserById(Integer id) {
+    public void singleUser(Integer id) {
 
     }
 
@@ -31,11 +31,11 @@ public class ControllerAPI implements ControllerInterface {
 
     }
 
-    public void registerUser() {
+    public void register() {
 
     }
 
-    public void authUser() {
+    public void login() {
 
     }
 
@@ -43,7 +43,7 @@ public class ControllerAPI implements ControllerInterface {
 
     }
 
-    public void getResourceById(Integer id) {
+    public void singleResource(Integer id) {
 
     }
 }

@@ -1,6 +1,6 @@
 <div >
  <h1 align="center"> Users management </h1>
- <p align="center"><a href="https://www.codefactor.io/repository/github/cravidjorge/esii"><img src="https://www.codefactor.io/repository/github/cravidjorge/esii/badge" alt="CodeFactor" /></a></p>
+ <p align="center"><a href="https://www.codefactor.io/repository/github/cravidjorge/esii"><img src="https://www.codefactor.io/repository/github/cravidjorge/esii/badge" alt="CodeFactor"></a>&#8287;<a href="https://travis-ci.org/github/cravidjorge/ESII"><img src="https://travis-ci.org/cravidjorge/ESII.svg?branch=master"></a></p>
 </div>
 
 ## 🛠 Dependencies

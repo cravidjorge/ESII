@@ -10,7 +10,7 @@ import java.io.IOException;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class ControllerTest {
+class GlobalTest {
     ControllerInterface controller = null;
 
     @BeforeEach
